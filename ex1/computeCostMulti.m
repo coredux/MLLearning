@@ -12,9 +12,15 @@ J = 0;
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
+rightSum = 0;
 
-
-
+for i=1:m;
+    xToi = X(i,:); %xToi 1 * n then xToi' n * 1
+    A = theta' * xToi';
+    hypoToi = sum( A(:) ); % theta n * 1 then theta' 1 * n
+    rightSum = rightSum + ( y(i) - hypoToi )^2;
+end
+J = rightSum / ( 2 * m );
 
 
 % =========================================================================
