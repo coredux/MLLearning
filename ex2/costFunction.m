@@ -19,11 +19,22 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+sumJVal = 0;
+
+for i = 1:m;
+    sumJVal = sumJVal + ( -y(i) * log( sigmoid( X( i , : ) * theta ) ) - ( 1 - y(i) ) * log( 1 - sigmoid( X( i , : ) * theta ) ) );
+end
+J = sumJVal / m;
 
 
-
-
-
+for i = 1:size(theta);
+    jVal = 0;
+    for j = 1:m;
+        jVal = jVal + ( sigmoid( X( j , : ) * theta ) - y( j ) ) * X( j , i );
+    end
+    jVal = jVal / m;
+    grad( i ) = jVal;
+end
 
 
 
