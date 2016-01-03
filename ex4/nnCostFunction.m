@@ -72,7 +72,6 @@ for i = 1:m;
     innerSum = 0;
     iHypoVal = sigmoid( Theta2 * [ 1 ; sigmoid( Theta1 * X(i,:)' ) ] ); 
     for k = 1:num_labels;
-        %  -Y( i , k ) * log( iHypoVal(k) ) - ( 1 - Y( i , k ) ) * log( 1 - iHypoVal(k)  )
         innerSum = innerSum + ( ... 
                     -Y( i , k ) * log( iHypoVal(k) ) - ( 1 - Y( i , k ) ) * log( 1 - iHypoVal(k)  )  ...
             );
