@@ -86,24 +86,23 @@ regTheta2 = Theta2( : , 2:end ).^2;
 J = J + ( sum( regTheta1(:)  ) + sum( regTheta2(:)  ) ) * lambda / ( 2 * m );
 
 % backprop
+
 for t = 1:m;
     
     a1 = X( t , : ); % note: already add the bias
     a1 = a1';
     z2 = Theta1 * a1;
-    %z2 = [ 1; z2 ];
+    z2 = [ 1; z2 ];
     a2 = sigmoid( z2 );
-    a2 = [ 1;a2];
     z3 = Theta2 * a2;
     a3 = sigmoid( z3 );
     
-    delta3 = a3 - Y( t , : )';
-    delta2 = Theta2' * delta3 .* sigmoidGradient( [ 1 ; z2 ] );
-    delta2 = delta2(2:end);
+    delta3 = a3 - Y( m , : )';
     
-    Theta1_grad = Theta1_grad + delta2 * a1';
+    delta2 = Theta2' * delta3 .* sigmoidGradient( z2 );
+    
     Theta2_grad = Theta2_grad + delta3 * a2';
-
+    Theta1_grad = Theta1_grad + delta2(2:end) * a1';
 end
 Theta1_grad = Theta1_grad ./ m;
 Theta2_grad = Theta2_grad ./ m;
