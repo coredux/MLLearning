@@ -81,20 +81,10 @@ for i = 1:m;
 end
 J = outerSum / m;
 
+regTheta1 = Theta1( : , 2:end ).^2;
+regTheta2 = Theta2( : , 2:end ).^2;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+J = J + ( sum( regTheta1(:)  ) + sum( regTheta2(:)  ) ) * lambda / ( 2 * m );
 
 
 
