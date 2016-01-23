@@ -23,12 +23,12 @@ idx = zeros(size(X,1), 1);
  m = size( X , 1 );
  
  for i = 1:m;
-     xi = X( i , : );
+     xi = X(i,:);
      
-     minDist = sum( (xi - centroids( 1,:)).^2 );
+     minDist = (xi - centroids(1)).^2;
      minCen = 1;
      for j = 2:K;
-         nowDist = sum( ( xi - centroids(j,:) ).^2 );
+         nowDist = ( xi - centroids(j) ).^2;
          if nowDist < minDist ;
              minDist = nowDist;
              minCen = j;
