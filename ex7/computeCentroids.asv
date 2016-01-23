@@ -26,17 +26,14 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-pointsCnt = zeros( K , 1 );
-pointsSum = zeros( K , n );
+pointsCnt = zeors( K , 1 );
 
 for i = 1:m;
-    pointsCnt( idx(i) ) = pointsCnt( idx(i) ) +  1;
-    pointsSum( idx(i) , : ) = pointsSum( idx(i) , : ) + X( i , : );
+    pointsCnt( idx(i) ) = 1;
 end
 
-for i = 1:K;
-    centroids( i , : ) = pointsSum( i , : ) ./ pointsCnt( i );
-end
+
+
 
 
 
