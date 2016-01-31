@@ -55,7 +55,7 @@ J = J / 2;
 X_grad =( ( X * Theta' - Y ) .* R ) * Theta + lambda * X;
 
 
-Theta_grad =( ( ( X * Theta' - Y ) .* R )'  ) * X  + lambda * Theta;
+Theta_grad =( ( ( X * Theta' - Y ) .* R )'  ) * X + lambda * Theta;
 
 
 
