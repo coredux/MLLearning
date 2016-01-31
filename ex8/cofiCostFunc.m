@@ -44,7 +44,13 @@ J =(( X * Theta' - Y ) .* R).^2;
 
 J = sum( J(:) );
 
+ThetaSq = Theta.^2;
+XSq = X.^2
+
+J = J + lambda * ( sum( ThetaSq(:) ) + sum( XSq(:) ) );
+
 J = J / 2;
+
 
 X_grad =( ( X * Theta' - Y ) .* R ) * Theta;
 
